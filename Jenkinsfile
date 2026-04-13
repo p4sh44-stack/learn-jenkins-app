@@ -53,6 +53,16 @@ pipeline {
                     node_modules/.bin/netlify deploy --dir=build --prod
                 '''
             }
+        }
+        stage('Prod E2E') {
+            environment {
+                CI_ENVIRONMENT_URL = 'https://remarkable-babka-ea3a9c.netlify.app'
+            }
+            steps {
+                sh '''
+                    npx playwright test --reporter=html
+                '''
+            }
         }        
     }
 
