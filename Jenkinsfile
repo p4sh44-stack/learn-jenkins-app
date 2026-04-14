@@ -8,9 +8,11 @@ pipeline {
 
     stages {
         stage('Build') {
-            docker { 
-                image 'mcr.microsoft.com/playwright:v1.39.0-jammy' 
-                reuseNode true
+            agent {
+                docker { 
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy' 
+                    reuseNode true
+                }
             }
             steps {
                 sh '''
