@@ -40,10 +40,12 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
-                sh '''
-                    yum install -y docker
-                    docker build -t myjenkinsapp .
-                '''
+                    sh '''
+                        yum install -y docker
+                        docker build -t myjenkinsapp .
+                    '''
+                }
+            }
         }
 
         stage('Deploy to AWS') {
