@@ -44,8 +44,7 @@ pipeline {
                     yum install -y docker
                     docker build -t myjenkinsapp .
                 '''
-            }
-        }        
+        }
 
         stage('Deploy to AWS') {
             agent {
